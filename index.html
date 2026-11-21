@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petualangan Cinta Tanah Air</title>
+<style>
+:root{--red:#c91f2c;--red2:#ef3944;--yellow:#ffd447;--gold:#f3ad18;--cream:#fff8df;--ink:#49231d;--green:#2f8b57;--blue:#2877b9}
+*{box-sizing:border-box}body{margin:0;font-family:"Trebuchet MS",Arial,sans-serif;color:var(--ink);background:radial-gradient(circle at 15% 15%,#ffdf66 0 7%,transparent 7.5%),linear-gradient(145deg,#b91627,#e9333b 55%,#a80f20);min-height:100vh}
+button{font:inherit;cursor:pointer;border:0}.wrap{max-width:980px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;align-items:center;color:#fff;gap:12px}.brand{font-weight:900;letter-spacing:.5px}.pill{background:#fff3c4;color:#8c1a20;padding:8px 13px;border-radius:30px;font-weight:800}
+.hero{background:var(--yellow);border:5px solid #fff0a5;border-radius:28px;padding:22px;text-align:center;box-shadow:0 8px 0 #8f1721;margin:18px 0 20px;position:relative;overflow:hidden}.hero:before,.hero:after{content:"✦";position:absolute;font-size:55px;color:#e85b28;opacity:.25}.hero:before{left:15px;top:5px}.hero:after{right:18px;bottom:0}.flag{font-size:48px;line-height:1.1}.hero h1{font-size:clamp(27px,5vw,43px);margin:7px 0;color:#a91622;text-shadow:1px 2px #fff}.hero p{margin:6px auto;max-width:650px;font-weight:700}
+.panel{background:var(--cream);border:4px solid #ffe58a;border-radius:24px;padding:clamp(16px,3vw,28px);box-shadow:0 8px 0 #8f1721}
+h2{margin:0 0 12px;color:#a91622}.sub{color:#80534a;font-weight:700}.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.field{flex:1;min-width:190px}.field label{display:block;font-weight:800;margin-bottom:6px}.field input{width:100%;padding:13px;border:2px solid #edb83a;border-radius:13px;font-size:16px;background:white;color:var(--ink)}
+.btn{background:var(--red);color:white;font-weight:900;padding:13px 20px;border-radius:14px;box-shadow:0 4px 0 #81111c;transition:.12s}.btn:hover{transform:translateY(-2px)}.btn.yellow{background:#ffc928;color:#69201c;box-shadow:0 4px 0 #c18a0b}.btn.light{background:#fff;color:#9f1724;box-shadow:0 4px 0 #e4c77c}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.hidden{display:none!important}.progressline{height:13px;background:#f0dfad;border-radius:20px;overflow:hidden;margin:10px 0 18px}.progress{height:100%;width:0;background:linear-gradient(90deg,#ef3944,#ffc928);transition:width .3s}
+.meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-weight:900;color:#a51d26}.question{font-size:clamp(20px,3vw,27px);font-weight:900;line-height:1.35;margin:18px 0}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.choice{background:white;border:3px solid #f1c65a;border-radius:17px;padding:16px 12px;min-height:80px;font-weight:900;font-size:17px;color:#592d26;text-align:center;box-shadow:0 4px 0 #e8d6a4}.choice:hover{border-color:var(--red2);background:#fff4d1}.choice.selected{border-color:#2877b9;background:#e6f4ff}.choice.correct{border-color:var(--green);background:#e2f7e9}.choice.wrong{border-color:#d62e39;background:#ffe5e5}
+.feedback{margin:15px 0;padding:13px;border-radius:14px;font-weight:800;background:#fff0c0;min-height:48px}.feedback.good{background:#def5e5;color:#17683b}.feedback.bad{background:#ffe2e2;color:#9e1821}
+.gamegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}.sortcard{background:#fff;border:3px solid #f0c65b;border-radius:16px;padding:15px;text-align:center;font-weight:900}.sortcard .emoji{font-size:30px;display:block;margin-bottom:5px}.sortcard button{margin:7px 4px 0;padding:9px 12px;border-radius:10px;font-weight:900;background:#ffe49a;color:#7d2020}.sortcard.done{border-color:var(--green);background:#e5f7e8}
+.result{text-align:center}.bigscore{font-size:clamp(42px,8vw,70px);font-weight:1000;color:#b51c2a}.medal{font-size:64px}.stars{font-size:34px;letter-spacing:5px}.resultbox{background:#fff0bd;border-radius:18px;padding:15px;margin:14px 0}.footer{text-align:center;color:#ffe9a4;font-size:13px;font-weight:700;padding:20px 5px}
+@media(max-width:650px){.choices{grid-template-columns:1fr}.choice{min-height:58px}.gamegrid{grid-template-columns:1fr}.top{align-items:flex-start}.wrap{padding:12px}.hero{padding:17px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <div class="top"><div class="brand">🇮🇩 MISI NUSANTARA</div><div class="pill">Kelas 1 SD • Belajar sambil bermain</div></div>
+ <header class="hero"><div class="flag">🇮🇩 🌟 🏝️</div><h1>Petualangan Cinta Tanah Air</h1><p>Yuk, jadi anak Indonesia yang bangga, peduli, dan sayang kepada negeri sendiri!</p></header>
+
+ <section id="start" class="panel">
+  <h2>🎒 Siap memulai petualangan?</h2>
+  <p class="sub">Kumpulkan bintang dengan menjawab kuis dan menyelesaikan permainan kecil.</p>
+  <div class="row">
+   <div class="field"><label for="nama">Nama pemain</label><input id="nama" maxlength="24" placeholder="Tulis nama kamu"></div>
+   <div class="field"><label for="kelas">Kelas</label><input id="kelas" maxlength="12" placeholder="Contoh: 1A"></div>
+  </div>
+  <p>Di dalam permainan ada <b>20 soal pilihan ganda</b> dan <b>Misi Pilih Sikap</b>.</p>
+  <button class="btn" onclick="mulai()">MULAI PETUALANGAN 🚀</button>
+ </section>
+
+ <section id="quiz" class="panel hidden">
+  <div class="meta"><span id="nomor">Soal 1 dari 20</span><span id="skor">⭐ 0 poin</span></div>
+  <div class="progressline"><div id="bar" class="progress"></div></div>
+  <div class="sub" id="kategori">Misi 1 • Kenali Indonesia</div>
+  <div id="pertanyaan" class="question"></div>
+  <div id="opsi" class="choices"></div>
+  <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+  <div class="row" style="justify-content:flex-end"><button id="lanjut" class="btn yellow hidden" onclick="berikutnya()">Lanjut ➜</button></div>
+ </section>
+
+ <section id="mini" class="panel hidden">
+  <h2>🧭 Misi Pilih Sikap!</h2>
+  <p class="sub">Pilih tindakan yang menunjukkan cinta tanah air. Selesaikan semua kartu untuk mendapat bintang tambahan.</p>
+  <div class="meta"><span id="miniCount">Kartu 1 dari 6</span><span id="miniScore">⭐ 0 bintang</span></div>
+  <div class="progressline"><div id="miniBar" class="progress"></div></div>
+  <div id="miniArea" class="gamegrid"></div>
+  <div id="miniFeedback" class="feedback hidden" aria-live="polite"></div>
+  <div class="row" style="justify-content:flex-end"><button id="miniNext" class="btn yellow hidden" onclick="nextMini()">Lanjut ➜</button></div>
+ </section>
+
+ <section id="hasil" class="panel hidden result">
+  <div class="medal" id="medal">🏅</div><h2>Hebat! Petualangan selesai!</h2>
+  <p id="sapaan" class="sub"></p>
+  <div class="bigscore" id="total">0</div><b>POIN</b>
+  <div class="stars" id="bintang">☆☆☆☆☆</div>
+  <div class="resultbox" id="rincian"></div>
+  <p>Terus tunjukkan cinta tanah air dengan belajar, menjaga lingkungan, menghargai budaya, dan hidup rukun. 🇮🇩</p>
+  <button class="btn" onclick="ulang()">MAIN LAGI 🔁</button>
+  <button class="btn light" onclick="window.print()">CETAK HASIL</button>
+ </section>
+ <div class="footer">Merah putih berkibar • Beragam budaya, satu Indonesia ❤️💛</div>
+</div>
+<script>
+const soal=[
+{q:"Apa nama negara tempat kita tinggal?",o:["Indonesia","Malaysia","Jepang"],a:0,why:"Negara tempat kita tinggal bernama Indonesia.",cat:"Kenali Indonesia"},
+{q:"Apa nama bendera negara Indonesia?",o:["Merah Putih","Merah Kuning","Putih Biru"],a:0,why:"Bendera negara Indonesia dikenal dengan nama Sang Merah Putih.",cat:"Kenali Indonesia"},
+{q:"Lagu kebangsaan negara Indonesia adalah ...",o:["Balonku","Indonesia Raya","Pelangi"],a:1,why:"Indonesia Raya adalah lagu kebangsaan Indonesia.",cat:"Kenali Indonesia"},
+{q:"Bahasa persatuan bangsa Indonesia adalah ...",o:["Bahasa Indonesia","Bahasa Jepang","Bahasa Inggris"],a:0,why:"Bahasa Indonesia menyatukan masyarakat dari berbagai daerah.",cat:"Kenali Indonesia"},
+{q:"Apa nama lambang negara Indonesia?",o:["Garuda Pancasila","Burung Merpati","Harimau Sumatra"],a:0,why:"Lambang negara Indonesia adalah Garuda Pancasila.",cat:"Kenali Indonesia"},
+{q:"Kapan kita biasanya mengikuti upacara bendera di sekolah?",o:["Hari Senin","Saat tidur","Tengah malam"],a:0,why:"Banyak sekolah mengadakan upacara bendera setiap hari Senin.",cat:"Bangga pada negeri"},
+{q:"Saat lagu Indonesia Raya dinyanyikan, sikap kita adalah ...",o:["Bercanda keras","Berdiri tegap dan tertib","Berlari-lari"],a:1,why:"Kita menghormati lagu kebangsaan dengan sikap tertib.",cat:"Bangga pada negeri"},
+{q:"Siapakah yang berjuang untuk kemerdekaan Indonesia?",o:["Para pahlawan","Pemain film saja","Pedagang mainan"],a:0,why:"Para pahlawan berjuang agar Indonesia merdeka.",cat:"Bangga pada negeri"},
+{q:"Tanggal kemerdekaan Indonesia diperingati setiap ...",o:["17 Agustus","1 Januari","10 November"],a:0,why:"Indonesia memproklamasikan kemerdekaan pada 17 Agustus 1945.",cat:"Bangga pada negeri"},
+{q:"Apa yang dapat kita lakukan untuk menghargai jasa pahlawan?",o:["Belajar dengan rajin","Merusak fasilitas umum","Membuang sampah sembarangan"],a:0,why:"Belajar rajin adalah salah satu cara mengisi kemerdekaan.",cat:"Bangga pada negeri"},
+{q:"Indonesia memiliki banyak ...",o:["Pulau dan suku bangsa","Salju sepanjang tahun","Bahasa yang sama di setiap daerah saja"],a:0,why:"Indonesia adalah negara kepulauan dengan beragam suku bangsa.",cat:"Indahnya keberagaman"},
+{q:"Rumah adat, tarian, dan pakaian daerah merupakan ...",o:["Kekayaan budaya Indonesia","Alat untuk bertengkar","Benda yang harus dibuang"],a:0,why:"Budaya daerah adalah kekayaan bangsa yang patut dihargai.",cat:"Indahnya keberagaman"},
+{q:"Temanmu memakai pakaian adat dari daerah lain. Sikapmu ...",o:["Mengejeknya","Menghargainya","Menjauhinya"],a:1,why:"Kita menghargai budaya dan pakaian adat dari semua daerah.",cat:"Indahnya keberagaman"},
+{q:"Jika teman berbicara dengan logat daerah berbeda, kita sebaiknya ...",o:["Menertawakan","Mendengarkan dengan baik","Melarangnya berteman"],a:1,why:"Logat daerah adalah bagian dari keberagaman yang harus dihormati.",cat:"Indahnya keberagaman"},
+{q:"Apa yang membuat kita tetap menjadi satu bangsa meskipun berbeda daerah?",o:["Saling bermusuhan","Persatuan","Saling mengejek"],a:1,why:"Persatuan membuat masyarakat Indonesia tetap rukun.",cat:"Indahnya keberagaman"},
+{q:"Saat berkunjung ke pantai, tindakan cinta tanah air adalah ...",o:["Membuang sampah ke laut","Menjaga kebersihan pantai","Merusak tanaman"],a:1,why:"Menjaga alam berarti ikut merawat kekayaan Indonesia.",cat:"Sayangi Indonesia"},
+{q:"Manakah contoh menggunakan produk buatan Indonesia?",o:["Memilih kerajinan lokal","Merusak hasil karya perajin","Mengejek barang buatan daerah"],a:0,why:"Menghargai dan menggunakan produk lokal membantu perajin Indonesia.",cat:"Sayangi Indonesia"},
+{q:"Saat melihat teman menanam pohon di halaman sekolah, kamu dapat ...",o:["Membantu menyiram","Mencabutnya","Menginjak tanah tanamannya"],a:0,why:"Merawat tanaman membuat lingkungan menjadi lebih hijau.",cat:"Sayangi Indonesia"},
+{q:"Jika menemukan sampah di halaman sekolah, sebaiknya ...",o:["Dibiarkan saja","Dipungut dan dibuang ke tempat sampah","Ditendang ke kelas"],a:1,why:"Menjaga kebersihan sekolah adalah bentuk kepedulian terhadap lingkungan.",cat:"Sayangi Indonesia"},
+{q:"Apa yang sebaiknya kita lakukan ketika melihat keindahan alam Indonesia?",o:["Menjaganya agar tetap lestari","Merusaknya","Mengotorinya"],a:0,why:"Alam Indonesia harus dijaga agar tetap indah untuk semua.",cat:"Sayangi Indonesia"}
+];
+const miniData=[
+{e:"🧹",t:"Membuang sampah pada tempatnya",yes:true},
+{e:"🎭",t:"Menghargai tarian dari daerah lain",yes:true},
+{e:"🌳",t:"Merusak pohon di taman",yes:false},
+{e:"🇮🇩",t:"Mengikuti upacara dengan tertib",yes:true},
+{e:"🗣️",t:"Mengejek logat bicara teman",yes:false},
+{e:"🧺",t:"Membeli kerajinan buatan perajin lokal",yes:true}
+];
+let idx=0,benar=0,poinMini=0,miniIdx=0,miniBenar=0,locked=false,nama="";
+const $=id=>document.getElementById(id);
+function show(id){["start","quiz","mini","hasil"].forEach(x=>$(x).classList.toggle("hidden",x!==id))}
+function mulai(){nama=$("nama").value.trim()||"Pahlawan Cilik";idx=0;benar=0;poinMini=0;miniIdx=0;miniBenar=0;show("quiz");renderSoal()}
+function renderSoal(){locked=false;let s=soal[idx];$("nomor").textContent=`Soal ${idx+1} dari ${soal.length}`;$("skor").textContent=`⭐ ${benar*5} poin`;$("kategori").textContent=`Misi ${Math.floor(idx/4)+1} • ${s.cat}`;$("pertanyaan").textContent=s.q;$("bar").style.width=(idx/soal.length*100)+"%";$("feedback").className="feedback hidden";$("lanjut").classList.add("hidden");$("opsi").innerHTML="";s.o.forEach((v,i)=>{let b=document.createElement("button");b.className="choice";b.textContent=String.fromCharCode(65+i)+". "+v;b.onclick=()=>jawab(i,b);$("opsi").appendChild(b)})}
+function jawab(i,el){if(locked)return;locked=true;let s=soal[idx],buttons=[...$("opsi").children];buttons.forEach((b,j)=>{b.disabled=true;if(j===s.a)b.classList.add("correct")});let f=$("feedback");if(i===s.a){benar++;f.textContent="✨ Hebat! "+s.why;f.className="feedback good"}else{el.classList.add("wrong");f.textContent="Tidak apa-apa, ayo belajar! "+s.why;f.className="feedback bad"}$("skor").textContent=`⭐ ${benar*5} poin`;$("lanjut").textContent=idx===soal.length-1?"Ke Misi Pilih Sikap ➜":"Soal berikutnya ➜";$("lanjut").classList.remove("hidden")}
+function berikutnya(){idx++;if(idx<soal.length)renderSoal();else{show("mini");renderMini()}}
+function renderMini(){let d=miniData[miniIdx];$("miniCount").textContent=`Kartu ${miniIdx+1} dari ${miniData.length}`;$("miniScore").textContent=`⭐ ${poinMini} bintang`;$("miniBar").style.width=(miniIdx/miniData.length*100)+"%";$("miniFeedback").className="feedback hidden";$("miniNext").classList.add("hidden");$("miniArea").innerHTML=`<div class="sortcard" style="grid-column:1/-1"><span class="emoji">${d.e}</span><div>${d.t}</div><p>Apakah tindakan ini menunjukkan cinta tanah air?</p><button onclick="jawabMini(true)">❤️ Ya, cinta tanah air</button><button onclick="jawabMini(false)">🤔 Bukan</button></div>`}
+function jawabMini(v){let d=miniData[miniIdx],ok=v===d.yes;let f=$("miniFeedback");if(ok){miniBenar++;poinMini+=10;f.textContent="Bagus! Kamu bisa memilih sikap yang tepat.";f.className="feedback good"}else{f.textContent="Ayo coba ingat: cinta tanah air berarti menjaga, menghargai, dan merawat Indonesia.";f.className="feedback bad"}[...$("miniArea").querySelectorAll("button")].forEach(b=>b.disabled=true);$("miniNext").textContent=miniIdx===miniData.length-1?"Lihat hasil 🏆":"Kartu berikutnya ➜";$("miniNext").classList.remove("hidden");$("miniScore").textContent=`⭐ ${poinMini} bintang`}
+function nextMini(){miniIdx++;if(miniIdx<miniData.length)renderMini();else tampilHasil()}
+function tampilHasil(){show("hasil");let total=benar*5+poinMini,stars=Math.max(1,Math.round(total/22));$("total").textContent=total;$("bintang").textContent="⭐".repeat(Math.min(5,stars))+"☆".repeat(5-Math.min(5,stars));$("medal").textContent=total>=130?"🏆":total>=90?"🥇":"🌟";$("sapaan").textContent=`Terima kasih, ${nama}! Kamu sudah menyelesaikan semua misi.`;$("rincian").innerHTML=`<b>Hasil petualanganmu</b><br>Jawaban kuis benar: ${benar} dari 20 soal<br>Poin kuis: ${benar*5}<br>Misi sikap benar: ${miniBenar} dari 6 kartu<br>Poin misi: ${poinMini}<br><b>Total: ${total} poin</b>`}
+function ulang(){$("nama").value=nama;show("start")}
+</script>
+</body>
+</html>
